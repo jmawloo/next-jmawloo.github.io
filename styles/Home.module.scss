@@ -1,18 +1,3 @@
-.introBox {
-  min-height: 400px;
-  width: fill;
-  // width: 70%;
-  border: 5px solid black;
-  /* Stretch intro box to fill out inner container. */
-}
-
-.infoSection {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -31,6 +16,32 @@
   justify-content: center;
   align-items: center;
 }
+
+.introBox {
+  min-height: 400px;
+  width: fill;
+  // width: 70%;
+  border: 5px solid black;
+  /* Stretch intro box to fill out inner container. */
+  padding: 55px 66px 0 66px;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.profile {
+  border-radius: 250px;
+}
+
+.infoTextSection {
+  margin-left: 50px;
+}
+
+
+
 
 .footer {
   width: 100%;

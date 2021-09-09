@@ -18,10 +18,11 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.introBox}>
           <div className={styles.infoSection}>
-            <Image className={styles.profile} src={Profile} alt={"Picture of me (Jeff Ma)"} />
+            <Image className={styles.profile} src={Profile} alt={"Picture of me (Jeff Ma)"} width={177} height={177} />
             <div className={styles.infoTextSection}> 
               <h1 className={styles.fullName}>{"Jeff Ma"}</h1>
               <p>{"Web / Fullstack / Mobile Developer"}</p>
+              <p className="textGray"> {"3rd Year Computer Engineering at University of Waterloo"}</p>
             </div>
             
           </div>

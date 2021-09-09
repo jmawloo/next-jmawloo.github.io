@@ -11,6 +11,18 @@ a {
   text-decoration: none;
 }
 
+p, h1 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 64px;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.textGray {
+  color: #8E8E8E;
 }
