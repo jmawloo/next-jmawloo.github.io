@@ -33,8 +33,8 @@ const HomeWeb = () => (
       </div>
     </div>
     <div className={styles.blurbSection}>
-      {IntroCopies.BLURB.map((para: string) => {
-        return <p className="line-space justify">{para}</p>;
+      {IntroCopies.BLURB.map((para: string, i: number) => {
+        return <p key={i} className="line-space justify">{para}</p>;
       })}
     </div>
   </div>
