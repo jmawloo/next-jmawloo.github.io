@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.scss'
 export type ContactItemType = {
   link: string,
   label: string,
-  Icon: React.Component,
+  Icon: any,
 }
 
 const ContactItem = ({link, label, Icon} : ContactItemType) => (
