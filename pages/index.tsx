@@ -10,9 +10,9 @@ import HomeMobile from '../components/HomeMobile'
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // User agent code from https://stackoverflow.com/a/60146925
   const userAgent = context.req.headers['user-agent'];
-  const isMobile = Boolean(userAgent.match(
+  const isMobile = userAgent ? Boolean(userAgent.match(
     /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-  ))
+  )) : false;
   return {
     props: {
       deviceType: isMobile ? 'mobile' : 'desktop'
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const Home: NextPage = ({deviceType}) => {
+const Home: NextPage = (/*{props}*/) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -30,10 +30,11 @@ const Home: NextPage = ({deviceType}) => {
       </Head>
 {/* Body */}
       <main className={styles.main}>
-        {deviceType === "mobile" ? 
-          <HomeWeb /> : 
+        {/* {props.deviceType === "mobile" ? 
+          <HomeMobile /> : 
           <HomeWeb />
-        }
+        } */}
+        <HomeWeb />
       </main>
 
       {/* <footer className={styles.footer}>
