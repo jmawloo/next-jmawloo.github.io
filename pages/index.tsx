@@ -1,12 +1,26 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps} from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+
 import styles from '../styles/Home.module.scss'
-import Profile from '../assets/images/profile.jpg'
+
+import HomeWeb from '../components/HomeWeb'
+import HomeMobile from '../components/HomeMobile'
 
 // TODO: Logic here to separate web from mobile view component.
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // User agent code from https://stackoverflow.com/a/60146925
+  const userAgent = context.req.headers['user-agent'];
+  const isMobile = Boolean(userAgent.match(
+    /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+  ))
+  return {
+    props: {
+      deviceType: isMobile ? 'mobile' : 'desktop'
+    }
+  }
+}
 
-const Home: NextPage = () => {
+const Home: NextPage = ({deviceType}) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,20 +30,13 @@ const Home: NextPage = () => {
       </Head>
 {/* Body */}
       <main className={styles.main}>
-        <div className={styles.introBox}>
-          <div className={styles.infoSection}>
-            <Image className={styles.profile} src={Profile} alt={"Picture of me (Jeff Ma)"} />
-            <div className={styles.infoTextSection}> 
-              <h1 className={styles.fullName}>{"Jeff Ma"}</h1>
-              <p>{"Web / Fullstack / Mobile Developer"}</p>
-            </div>
-            
-          </div>
-          
-        </div>
+        {deviceType === "mobile" ? 
+          <HomeWeb /> : 
+          <HomeWeb />
+        }
       </main>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -40,7 +47,7 @@ const Home: NextPage = () => {
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }

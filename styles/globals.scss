@@ -1,3 +1,5 @@
+@use './breakpoints' as bp;
+
 html,
 body {
   padding: 0;
@@ -11,6 +13,38 @@ a {
   text-decoration: none;
 }
 
+p, h1 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
 * {
   box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  @media only screen and (max-width: bp.$breakpoint-md) {
+    font-size: 14px;
+  }
+}
+
+.gray {
+  color: #8E8E8E;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.line-space {
+  margin-bottom: 0.625rem;
+}
+
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
 }
