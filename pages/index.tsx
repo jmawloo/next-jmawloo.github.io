@@ -1,34 +1,41 @@
-import type { NextPage, GetServerSideProps} from 'next'
-import Head from 'next/head'
+import type { NextPage, GetServerSideProps } from "next";
+import Head from "next/head";
 
-import styles from '../styles/Home.module.scss'
+import styles from "../styles/Home.module.scss";
 
-import HomeWeb from '../components/HomeWeb'
-import HomeMobile from '../components/HomeMobile'
+import HomeWeb from "../components/HomeWeb";
+// import HomeMobile from '../components/HomeMobile'
 
 // TODO: Logic here to separate web from mobile view component.
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // User agent code from https://stackoverflow.com/a/60146925
-  const userAgent = context.req.headers['user-agent'];
-  const isMobile = userAgent ? Boolean(userAgent.match(
-    /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-  )) : false;
+  const userAgent = context.req.headers["user-agent"];
+  const isMobile = userAgent
+    ? Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+      )
+    : false;
   return {
     props: {
-      deviceType: isMobile ? 'mobile' : 'desktop'
-    }
-  }
-}
+      deviceType: isMobile ? "mobile" : "desktop",
+    },
+  };
+};
 
 const Home: NextPage = (/*{props}*/) => {
   return (
     <div className={styles.container}>
       <Head>
         <title>Jeff Ma: About Me</title>
-        <meta name="description" content="My personal projects, experiences and skills/interests" />
+        <meta
+          name="description"
+          content="My personal projects, experiences and skills/interests"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-{/* Body */}
+      {/* Body */}
       <main className={styles.main}>
         {/* {props.deviceType === "mobile" ? 
           <HomeMobile /> : 
@@ -50,7 +57,7 @@ const Home: NextPage = (/*{props}*/) => {
         </a>
       </footer> */}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
